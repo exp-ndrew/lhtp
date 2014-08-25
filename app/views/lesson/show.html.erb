@@ -2,6 +2,10 @@
   <h1><%= @lesson.name %></h1>
   <p><%= @lesson.text %></p>
   <a href="/lessons/<%= @lesson.id %>" data-method="delete" rel="nofollow" class="btn btn-danger btn-xs">Delete Lesson</a>
-  <a href="/lessons/<%= @lesson.id %>/edit" data-method="get" rel="nofollow" class="btn btn-primary btn-xs">Edit Lesson</a>
+  <a href="/lessons/<%= @lesson.id %>/edit" data-method="get" class="btn btn-primary btn-xs">Edit Lesson</a>
+  <br>
+  <a href="/lessons/<%= @lesson.id %>/previous" class="btn btn-warning btn-xs">Prev</a>
+  <a href="/lessons/<%= @lesson.id %>/next" class="btn btn-success btn-xs">Next</a>
+  <br>
   <a href="/">Go back</a>
 </div>

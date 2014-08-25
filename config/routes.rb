@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   match('lessons/:id', {:via => :delete, :to => 'lesson#delete'})
   match('lessons/:id', {:via => [:put, :patch], :to => 'lesson#update'})
   match('lessons/:id/edit', {:via => :get, :to => 'lesson#edit'})
+
+  match('lessons/:id/next', {:via => :get, :to => 'lesson#next'})
+  match('lessons/:id/previous', {:via => :get, :to => 'lesson#previous'})
+
 end
