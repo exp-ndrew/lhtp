@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+development:
+  <<: *default
+  database: learnhowtoprogram_development
+
+test:
+  <<: *default
+  database: learnhowtoprogram_test
