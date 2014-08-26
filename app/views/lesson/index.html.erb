@@ -2,21 +2,46 @@
   <h1>Lessons</h1>
   <div class="row">
     <div class="col-md-8">
+
+    <% sorted_sections = @sections.sort_by{ |i| i.number } %>
+    <% sorted_sections.each do |section| %>
+      <h3><%= section.name %></h3>
       <table class="table">
         <thead>
           <td><strong>#</strong></td>
           <td><strong>Lesson Title</strong></td>
         </thead>
-        <% sorted_lessons = @lessons.sort_by{ |i| i.number} %>
+
+        <% sorted_lessons = @lessons.where( :section_id => section.id ).sort_by{ |i| i.number } %>
         <% sorted_lessons.each do |lesson| %>
+          <tr>
+            <td><%= lesson.number %>.</td>
+            <td><a href="/lessons/<%= lesson.id %>"><%= lesson.name %> </a></td>
+          </tr>
+        <% end %>
+
+      </table>
+
+    <% end %>
+    <h3>Unassigned Lessons</h3>
+    <table class="table">
+      <thead>
+        <td><strong>#</strong></td>
+        <td><strong>Lesson Title</strong></td>
+      </thead>
+
+      <% sorted_lessons = @lessons.where( :section_id => nil ).sort_by{ |i| i.number } %>
+      <% sorted_lessons.each do |lesson| %>
         <tr>
           <td><%= lesson.number %>.</td>
           <td><a href="/lessons/<%= lesson.id %>"><%= lesson.name %> </a></td>
         </tr>
-        <% end %>
-      </table>
+      <% end %>
+
+    </table>
     </div>
     <div class="col-md-4"></div>
   </div> <!--row-->
   <a href="lessons/new" class='btn btn-primary'> New Lesson </a>
+  <a href="sections/new" class='btn btn-primary'> New Section </a>
 </div>

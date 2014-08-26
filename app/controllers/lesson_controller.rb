@@ -2,6 +2,7 @@ require 'pry'
 class LessonController < ApplicationController
 
   def index
+    @sections = Section.all
     @lessons = Lesson.all
     render('lesson/index.html.erb')
   end

@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   match('lessons/:id/next', {:via => :get, :to => 'lesson#next'})
   match('lessons/:id/previous', {:via => :get, :to => 'lesson#previous'})
 
+  match('sections/', {:via => :get, :to => 'lesson#index'})
+  match('sections/new', {:via => :get, :to => 'section#new'})
+  match('sections', {:via => :post, :to => 'section#create'})
 end
