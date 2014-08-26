@@ -31,6 +31,7 @@ class LessonController < ApplicationController
 
   def edit
     @lessons = Lesson.all
+    @sections = Section.all
     @lesson = Lesson.find_by(id: params[:id])
     render('lesson/edit.html.erb')
   end
@@ -41,6 +42,7 @@ class LessonController < ApplicationController
     @lesson.name = params[:name]
     @lesson.text = params[:text]
     @lesson.number = params[:number]
+    @lesson.section_id = params[:section]
     @lesson.save
     redirect_to('/')
   end

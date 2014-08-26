@@ -6,9 +6,18 @@
     <input class='form-control' type='text' name='name' value='<%= @lesson.name %>'>
     <label for='text'>Lesson Text</label>
     <textarea class="form-control" name='text'><%= @lesson.text %></textarea>
-    <label for='number'>Number</label>
+    <label for='number'>Sort Order</label>
     <input class="form-control" type='number' name='number' value='<%= @lesson.number %>'>
+    <label for='section'>Section</label>
+    <select name="section">
+      <% sorted_sections = @sections.sort_by{ |i| i.number } %>
+      <% sorted_sections.each do |section| %>
+        <option value="<%= section.id %>"><%= section.name %></option>
+      <% end %>
+        <option value="<%= 'nil' %>">(unassigned)</option>
+    </select>
+    <br>
     <button class='btn btn-primary'>Submit Changes</button>
   </form>
-  <a href="/">Go back</a>
+  <a href="/lessons/<%= @lesson.id %>">Go back</a>
 </div>
