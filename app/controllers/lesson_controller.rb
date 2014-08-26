@@ -16,7 +16,7 @@ class LessonController < ApplicationController
   end
 
   def create
-    @new_lesson = Lesson.create({name: params[:name], text: params[:text]})
+    @new_lesson = Lesson.create({name: params[:name], text: params[:text], number: params[:number]})
     @lessons = Lesson.all
     redirect_to('/')
   end
@@ -39,6 +39,7 @@ class LessonController < ApplicationController
     @lesson = Lesson.find_by(id: params[:id])
     @lesson.name = params[:name]
     @lesson.text = params[:text]
+    @lesson.number = params[:number]
     @lesson.save
     redirect_to('/')
   end
@@ -46,33 +47,33 @@ class LessonController < ApplicationController
   def next
     @lessons = Lesson.all
     @current_lesson = Lesson.find_by(id: params[:id])
-    @next_index = nil
-    Lesson.all.each_with_index do |lesson, index|
-      if lesson.id == @current_lesson.id
-        @next_index = index.to_i + 1
+    sorted_lessons = @lessons.sort_by{ |i| i.number}
+    sorted_lessons.each_with_index do |i, index|
+      if i.id == @current_lesson.id
+        @next_lesson = sorted_lessons[index + 1]
       end
     end
-    if @next_index > Lesson.all.length - 1
+    if @next_lesson == nil
       redirect_to('/')
     else
-      @next_lesson = Lesson.all[@next_index]
       redirect_to("/lessons/#{@next_lesson.id}")
     end
   end
 
+
+
   def previous
     @lessons = Lesson.all
     @current_lesson = Lesson.find_by(id: params[:id])
-    @next_index = nil
-    Lesson.all.each_with_index do |lesson, index|
-      if lesson.id == @current_lesson.id
-        @next_index = index.to_i - 1
+    sorted_lessons = @lessons.sort_by{ |i| i.number }
+    sorted_lessons.each_with_index do |i, index|
+      if i.id == @current_lesson.id
+        @next_lesson = sorted_lessons[index - 1]
       end
     end
-   if @next_index < 0
+   if @next_lesson == sorted_lessons[-1]
      redirect_to('/')
    else
-     @next_lesson = Lesson.all[@next_index]
      redirect_to("/lessons/#{@next_lesson.id}")
    end
   end
