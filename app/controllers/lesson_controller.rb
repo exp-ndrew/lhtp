@@ -18,8 +18,9 @@ class LessonController < ApplicationController
   end
 
   def create
-    @new_lesson = Lesson.create({name: params[:name], text: params[:text], number: params[:number]})
+    @new_lesson = Lesson.create({name: params[:name], text: params[:text], number: params[:number], section_id: params[:section]})
     @lessons = Lesson.all
+    @sections = Section.all
     redirect_to('/')
   end
 
