@@ -8,6 +8,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'pry'
+gem 'rails_12factor'
 
 group :development do
   gem 'better_errors'
