@@ -11,12 +11,16 @@ A clone of the [learnhowtoprogram](http://learnhowtoprogram.com) textbook websit
 1. Run `$ rails server`
 1. Go to [http://localhost:3000/learnhowtoprogram](http://localhost:3000/learnhowtoprogram) in a web browser to use the program.
 
+
+## Live Version
+
+A live version of this application is deployed to Heroku [here](http://link.heroku.com).
 ## Meta
 
-25 August 2014
+25..26 August 2014
 
 
-[Lee Kebler](http://github.com/keebz) and [Andrew M Westling](http://github.com/expandrew)
+[Lee Kebler](http://github.com/keebz), [Sean Niesen](http://github.com/seann1) and [Andrew M Westling](http://github.com/expandrew)
 via [Epicodus](http://www.learnhowtoprogram.com/lessons/wikipages-to-do-in-rails)
 
 ## License
