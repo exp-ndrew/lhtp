@@ -52,7 +52,7 @@ class LessonController < ApplicationController
   def next
     @lessons = Lesson.all
     @current_lesson = Lesson.find_by(id: params[:id])
-    sorted_lessons = @lessons.sort_by{ |i| i.number}
+    sorted_lessons = @lessons.sort_by{ |i| [i.section_id, i.number] }
     sorted_lessons.each_with_index do |i, index|
       if i.id == @current_lesson.id
         @next_lesson = sorted_lessons[index + 1]
@@ -70,7 +70,7 @@ class LessonController < ApplicationController
   def previous
     @lessons = Lesson.all
     @current_lesson = Lesson.find_by(id: params[:id])
-    sorted_lessons = @lessons.sort_by{ |i| i.number }
+    sorted_lessons = @lessons.sort_by{ |i| [i.section_id, i.number] }
     sorted_lessons.each_with_index do |i, index|
       if i.id == @current_lesson.id
         @next_lesson = sorted_lessons[index - 1]
