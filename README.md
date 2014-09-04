@@ -14,7 +14,7 @@ A clone of the [learnhowtoprogram](http://learnhowtoprogram.com) textbook websit
 
 ## Live Version
 
-A live version of this application is deployed to Heroku [here](http://link.heroku.com).
+A live version of this application is deployed to Heroku [here](http://xpndrw-lhtp.heroku.com).
 ## Meta
 
 25..26 August 2014
